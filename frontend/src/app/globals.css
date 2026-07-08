@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --font: 'Poppins', system-ui, sans-serif;
+}
+
+[data-theme="light"] {
+  --bg: #f5f6f7;
+  --surface: #ffffff;
+  --surface-2: #f4f5f6;
+  --surface-3: #edeff1;
+  --border: #ecedef;
+  --border-strong: #e0e2e5;
+  --text: #1b1e22;
+  --text-2: #6a7178;
+  --text-3: #9aa1a8;
+  --accent: #1e7a59;
+  --accent-fg: #1a6b4d;
+  --accent-soft: #e6f2ec;
+  --on-accent: #ffffff;
+  --shadow: 0 1px 2px rgba(16,24,32,0.04), 0 6px 22px rgba(16,24,32,0.06);
+  --shadow-sm: 0 1px 2px rgba(16,24,32,0.04);
+  --st-good-bg: #e4f2ea; --st-good-fg: #1c6b4e;
+  --st-follow-bg: #e8edfb; --st-follow-fg: #3350bd;
+  --st-dnc-bg: #fceadf; --st-dnc-fg: #bf5f28;
+  --st-bad-bg: #fce7e6; --st-bad-fg: #cd3a37;
+  --st-sale-bg: #d6ecdf; --st-sale-fg: #0f6a4b;
+  --conf-hi: #1e7a59; --conf-med: #d98a3d; --conf-lo: #cf3b38;
+}
+
+[data-theme="dark"] {
+  --bg: #0e1113;
+  --surface: #171b1e;
+  --surface-2: #1e2327;
+  --surface-3: #262c31;
+  --border: #262c31;
+  --border-strong: #333a41;
+  --text: #e9ecee;
+  --text-2: #99a1a8;
+  --text-3: #6c747b;
+  --accent: #34c48b;
+  --accent-fg: #46d29b;
+  --accent-soft: #143128;
+  --on-accent: #07130d;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 34px rgba(0,0,0,0.4);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --st-good-bg: #163a2c; --st-good-fg: #5fd6a4;
+  --st-follow-bg: #1c2a52; --st-follow-fg: #92aaf0;
+  --st-dnc-bg: #3a2417; --st-dnc-fg: #e79a68;
+  --st-bad-bg: #3a1e1d; --st-bad-fg: #ec7a77;
+  --st-sale-bg: #143a2c; --st-sale-fg: #5fd6a4;
+  --conf-hi: #46d29b; --conf-med: #e0a45a; --conf-lo: #ec7a77;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 99px; border: 3px solid var(--surface); }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* ─── CRM Status badges ───────────────────────────────────────────────────────  */
+[data-st="good"]   { background: var(--st-good-bg);   color: var(--st-good-fg); }
+[data-st="follow"] { background: var(--st-follow-bg); color: var(--st-follow-fg); }
+[data-st="dnc"]    { background: var(--st-dnc-bg);    color: var(--st-dnc-fg); }
+[data-st="bad"]    { background: var(--st-bad-bg);    color: var(--st-bad-fg); }
+[data-st="sale"]   { background: var(--st-sale-bg);   color: var(--st-sale-fg); }
+
+/* ─── Confidence level bars ──────────────────────────────────────────────────── */
+[data-level="hi"]  { background: var(--conf-hi); }
+[data-level="med"] { background: var(--conf-med); }
+[data-level="lo"]  { background: var(--conf-lo); }
+
+/* ─── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes gz-spin    { to { transform: rotate(360deg); } }
+@keyframes gz-fadeup  { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes gz-pulse   { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.animate-fadeup  { animation: gz-fadeup 0.4s ease both; }
+.animate-spin    { animation: gz-spin 0.7s linear infinite; }
+.animate-pulse   { animation: gz-pulse 1s ease-in-out infinite; }
+
+/* ─── Utility ─────────────────────────────────────────────────────────────────  */
+button { font-family: var(--font); cursor: pointer; }
+a { color: var(--accent-fg); text-decoration: none; }
+a:hover { text-decoration: underline; }
